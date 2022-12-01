@@ -1,3 +1,5 @@
+Open the bin/server file (inside the bin/ folder) and replace its contents with this:
+
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -8,4 +10,5 @@ if [ -f $pid ]; then
 fi
 fuser -k -n tcp 3000
 export NODE_OPTIONS=--openssl-legacy-provider && rails server -b 0.0.0.0
+
 
