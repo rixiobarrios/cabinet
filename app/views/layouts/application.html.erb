@@ -14,11 +14,13 @@
 
       <!-- conditional for user sessions/rendering links -->
       <% if current_user != nil %>
-      <%= link_to "Your Dcuments", documents_path %>
+      <%= link_to "Your Documents", documents_path %>
       |
       <%= link_to "Edit profile", edit_user_registration_path %>
       |
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      |
+      <%= current_user.username %>
     
       <% else %>
       <%= link_to "Sign in", user_session_path %>
@@ -26,6 +28,22 @@
       <%= link_to "Sign up", new_user_registration_path %>
       <% end %>
 
+    <!-- conditional to avoid duplicate alerts or notices -->
+    <% if notice.present? %>
+    <div style="color: green;">
+      <%= notice %>
+    </div>
+
+    <% end %>
+
+    <% if alert.present? %>
+    <div style="color: red;">
+      <%= alert %>
+    </div>
+
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

@@ -3,9 +3,11 @@ class DocumentsController < ApplicationController
 
   # GET /documents or /documents.json
   def index
-    @documents = Document.all
+    # @documents = Document.all
 
     # @documents = Document.all.order(created_at: :DESC)
+
+    @documents = current_user.documents.order(created_at: :DESC)
   end
 
   # GET /documents/1 or /documents/1.json
